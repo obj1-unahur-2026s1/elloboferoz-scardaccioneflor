@@ -1,0 +1,144 @@
+import feroz.*
+import caperucita.*
+import abuelita.*
+import elementos.*
+import cazador.*
+
+///////////////////////////////////////////////////////////////////
+
+
+describe "El lobo Feroz y sus acciones" {
+  test "El lobo va corriendo hasta el bosque. " {
+    feroz.correr() // corre
+    assert.equals(9, feroz.pesoActual())
+
+  }
+
+ test "Luego, el lobo corre a la casa de la abuelita" {
+    feroz.correr() // corre
+    feroz.correr() // Vuelve a correr a la casa de la abuela
+    assert.equals(8, feroz.pesoActual())
+
+  }
+  test "  Luego, el lobo corre a la casa de la abuelita" {
+    feroz.correr() // corre
+    feroz.correr() // Vuelve a correr a la casa de la abuela
+    feroz.comer(abuelita) // se come a la abuelita
+    assert.equals(13, feroz.pesoActual())
+  }
+
+test "luego de comersela, se disfraza de ella." {
+    feroz.correr() // corre
+    feroz.correr() // Vuelve a correr a la casa de la abuela
+    feroz.comer(abuelita) // se come a la abuelita
+    feroz.seDisfraza() // se disfraza de la abueita
+    assert.equals(13, feroz.pesoActual())
+  }
+
+//Caperucita
+test "Caperucita cruza el bosque y se le cae una manzana de su canasta." {
+   feroz.correr() // corre
+    feroz.correr() // Vuelve a correr a la casa de la abuela
+    feroz.comer(abuelita) // se come a la abuelita
+    feroz.seDisfraza() // se disfraza de la abueita
+    caperucita.perderManzana()
+    assert.equals(5, caperucita.cantidadDeManzanas())
+  
+}
+
+test "abre grande su boca y se come a Caperucita con canasta llena y todo." {
+    feroz.correr() // corre
+    feroz.correr() // Vuelve a correr a la casa de la abuela
+    feroz.comer(abuelita) // se come a la abuelita
+    feroz.seDisfraza() // se disfraza de la abueita
+    caperucita.perderManzana() // pierde una manzana
+    feroz.comer(caperucita) // feroz se come a caperucita con canasta y todo
+       assert.equals(19.1, feroz.pesoActual())
+}
+
+test "aparece el cazador y empieza a correr a Feroz" {
+    feroz.correr() // corre
+    feroz.correr() // Vuelve a correr a la casa de la abuela
+    feroz.comer(abuelita) // se come a la abuelita
+    feroz.seDisfraza() // se disfraza de la abueita
+    caperucita.perderManzana() // pierde una manzana
+    feroz.comer(caperucita) // feroz se come a caperucita con canasta y todo
+    feroz.correr() // corre    
+       assert.equals(18.1, feroz.pesoActual())
+}
+
+
+test "Cazador corre a Feroz hasta que el sufra una crisis" {
+    feroz.correr() // corre
+    feroz.correr() // Vuelve a correr a la casa de la abuela
+    feroz.comer(abuelita) // se come a la abuelita
+    feroz.seDisfraza() // se disfraza de la abueita
+    caperucita.perderManzana() // pierde una manzana
+    feroz.comer(caperucita) // feroz se come a caperucita con canasta y todo
+    feroz.correr() // corre    
+    feroz.sufrirUnaCrisis() // feroz sufre uuna crisis
+       assert.equals(10, feroz.pesoActual())
+}
+
+test "Cazador salva a caperucita" {
+    feroz.correr() // corre
+    feroz.correr() // Vuelve a correr a la casa de la abuela
+    feroz.comer(abuelita) // se come a la abuelita
+    feroz.seDisfraza() // se disfraza de la abueita
+    caperucita.perderManzana() // pierde una manzana
+    feroz.comer(caperucita) // feroz se come a caperucita con canasta y todo
+    feroz.correr() // corre    
+    feroz.sufrirUnaCrisis() // feroz sufre uuna crisis
+   cazador.salvar(caperucita) // cazadpr salva a caperucita
+   assert.equals(feliz, caperucita.estadoDeVida())
+}
+test "Cazador salva a la abuelita" {
+    feroz.correr() // corre
+    feroz.correr() // Vuelve a correr a la casa de la abuela
+    feroz.comer(abuelita) // se come a la abuelita
+    feroz.seDisfraza() // se disfraza de la abueita
+    caperucita.perderManzana() // pierde una manzana
+    feroz.comer(caperucita) // feroz se come a caperucita con canasta y todo
+    feroz.correr() // corre    
+    feroz.sufrirUnaCrisis() // feroz sufre uuna crisis
+   cazador.salvar(caperucita) //cazador salva a caperucita
+    cazador.salvar(abuelita)  // cazador salva a abuelita
+   assert.equals(feliz, abuelita.estadoDeVida())
+}
+
+test "viven todos felices para siempre" {
+    feroz.correr() // corre
+    feroz.correr() // Vuelve a correr a la casa de la abuela
+    feroz.comer(abuelita) // se come a la abuelita
+    feroz.seDisfraza() // se disfraza de la abueita
+    caperucita.perderManzana() // pierde una manzana
+    feroz.comer(caperucita) // feroz se come a caperucita con canasta y todo
+    feroz.correr() // corre    
+    feroz.sufrirUnaCrisis() // feroz sufre uuna crisis
+   cazador.salvar(caperucita) //cazador salva a caperucita
+    cazador.salvar(abuelita)  // cazador salva a abuelita
+    cazador.cambiarEstado(feliz) // cazador felix junto a la abuelita y caperucita
+   assert.equals(feliz, cazador.estadoDeVida())
+}
+
+test "Feroz se encuentra en un estado de salud malo" {
+    feroz.correr() // corre
+    feroz.correr() // Vuelve a correr a la casa de la abuela
+    feroz.comer(abuelita) // se come a la abuelita
+    feroz.seDisfraza() // se disfraza de la abueita
+    caperucita.perderManzana() // pierde una manzana
+    feroz.comer(caperucita) // feroz se come a caperucita con canasta y todo
+    feroz.correr() // corre    
+    feroz.sufrirUnaCrisis() // feroz sufre uuna crisis
+    cazador.salvar(caperucita) //cazador salva a caperucita
+    cazador.salvar(abuelita)  // cazador salva a abuelita
+    cazador.cambiarEstado(feliz) // cazador felix junto a la abuelita y caperucita
+    feroz.pesoActual() // chequear su estado de salud
+    assert.equals( false ,feroz.estaSaludable() )
+}
+
+
+}
+
+
+// verpoque no funciona
